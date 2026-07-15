@@ -3,7 +3,7 @@
 import tensorflow as tf
 from tensorflow.keras.layers import TextVectorization
 
-from config import EMBEDDING_DIM, MAX_VOCAB
+from src.config import EMBEDDING_DIM, MAX_VOCAB
 
 
 def build_dense_model() -> tf.keras.Model:

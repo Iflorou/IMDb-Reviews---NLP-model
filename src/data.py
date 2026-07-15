@@ -6,7 +6,7 @@ import kagglehub
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-from config import DATASET_FILENAME, DATASET_SLUG, RANDOM_STATE, TEST_SIZE
+from src.config import DATASET_FILENAME, DATASET_SLUG, RANDOM_STATE, TEST_SIZE
 
 SENTIMENT_MAP = {"negative": 0, "positive": 1}
 
