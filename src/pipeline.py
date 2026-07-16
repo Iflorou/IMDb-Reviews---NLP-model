@@ -4,7 +4,7 @@ import pandas as pd
 import tensorflow as tf
 from tensorflow.keras.layers import TextVectorization
 
-from src.config import BATCH_SIZE, MAX_VOCAB
+from config import BATCH_SIZE, MAX_VOCAB
 
 
 def make_datasets(

@@ -5,6 +5,7 @@ Run from the src/ directory as:
 """
 
 import argparse
+from pathlib import Path
 
 from config import EPOCHS
 from data import load_train_test
@@ -13,6 +14,7 @@ from models import build_dense_model, build_dense_v2_model, build_lstm_model
 from pipeline import build_vectorizer, make_datasets, vectorize_datasets
 
 MODEL_CHOICES = ("dense", "dense_v2", "lstm")
+SAVED_MODELS_DIR = Path("saved_models")
 
 
 def train(model_name: str):
@@ -32,12 +34,16 @@ def train(model_name: str):
         evaluate_model(model, train_ds, test_ds, name="Dense V2")
         plot_history(history, name="Dense V2")
         plot_confusion_matrix(model, test_ds, name="Dense V2")
+        SAVED_MODELS_DIR.mkdir(parents=True, exist_ok=True)
+        model.save(SAVED_MODELS_DIR / "imdb_dense_v2.keras")
     elif model_name == "lstm":
         train_vec, test_vec = vectorize_datasets(train_ds, test_ds, vectorizer)
         model = build_lstm_model()
         history = model.fit(train_vec, validation_data=test_vec, epochs=EPOCHS)
         evaluate_model(model, train_vec, test_vec, name="LSTM")
         plot_history(history, name="LSTM")
+        SAVED_MODELS_DIR.mkdir(parents=True, exist_ok=True)
+        model.save(SAVED_MODELS_DIR / "imdb_lstm.keras")
     else:
         raise ValueError(f"Unknown model: {model_name}")
 
