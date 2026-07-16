@@ -1,0 +1,12 @@
+tensorflow==2.21.0
+keras==3.14.0
+pandas
+scikit-learn
+kagglehub
+matplotlib
+seaborn
+numpy
+uvicorn
+fastapi
+pydantic
+
